@@ -45,17 +45,17 @@
                             }
                        },
                 "columns": [
-                    { data: "id", name: "id", "visible":false },
-                    { data: "haryalal", name: "haryalal", "visible":false },
-                    { data: "heltes", name: "heltes", "visible":false },
-                    { data: "haryalalName", name: "haryalalName" },
-                    { data: "heltesName", name: "heltesName", "visible":false  },
-                    { data: "name", name: "name" },
-                    { data: "dats", name: "dats" },
-                    { data: "hats", name: "hats" },
-                    { data: "thats", name: "thats" },
-                    { data: "tuh", name: "tuh" },
-                    { data: "garUtas", name: "garUtas" }
+                  { data: "id", name: "id", "visible":false },
+                  { data: "haryalal", name: "haryalal", "visible":false },
+                  { data: "heltes", name: "heltes", "visible":false },
+                  { data: "haryalalName", name: "haryalalName" },
+                  { data: "heltesName", name: "heltesName" },
+                  { data: "name", name: "name" },
+                  { data: "dats", name: "dats" },
+                  { data: "hats", name: "hats" },
+                  { data: "thats", name: "thats" },
+                  { data: "tuh", name: "tuh" },
+                  { data: "garUtas", name: "garUtas" }
                   ]
             });
         });
@@ -73,7 +73,7 @@
     <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-3">
         <label for="">Харъяалал: </label>
         <select name="haryalal" id="cmbHaryalal" class="form-control">
-            <option value="0">Сонгоно уу</option>
+            <option value="0">Бүх хэсэг</option>
           @foreach ($haryalals as $haryalal)
             <option value="{{$haryalal->id}}">{{$haryalal->haryalalName}}</option>
           @endforeach

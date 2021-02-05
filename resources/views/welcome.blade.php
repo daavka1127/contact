@@ -81,7 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <ul>
+                      @foreach ($tests as $test)
+                        <li>{{$test->username}} {{$test->password}} {{$test->age}}</li>
+                      @endforeach
+                    </ul>
                 </div>
 
                 <div class="links">

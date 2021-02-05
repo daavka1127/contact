@@ -14,6 +14,10 @@ class adminController extends Controller
         $this->middleware('auth');
     }
 
+    public function showHome(){
+        return view('home');
+    }
+
     public function show(){
         $haryalals = DB::table('tb_haryalal')
             ->get();

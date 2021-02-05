@@ -17,7 +17,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'adminController@showHome')->name('home');
 
 Route::get('/', 'contactController@show');
 Route::post('/get/contacts','contactController@getContacts');
@@ -26,3 +26,14 @@ Route::post('/get/contacts/search','contactController@getContactsSearch');
 Route::post('/contact/store', 'adminController@store');
 Route::post('/contact/update', 'adminController@update');
 Route::post('/contact/delete', 'adminController@delete');
+
+Route::get('/test/users', 'testController@index');
+
+
+
+// Route::get('/test/asd', 'CompanyController@getLastListNumber');
+
+//START COMPANY
+Route::get('/company/show', 'CompanyController@show');
+Route::post('/get/companies', 'CompanyController@getCompanies');
+//END COMPANY
