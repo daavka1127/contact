@@ -28,6 +28,7 @@ Route::post('/contact/update', 'adminController@update');
 Route::post('/contact/delete', 'adminController@delete');
 
 Route::get('/test/users', 'testController@index');
+Route::get('/test', 'CompanyController@countCompany');
 
 
 
@@ -36,4 +37,6 @@ Route::get('/test/users', 'testController@index');
 //START COMPANY
 Route::get('/company/show', 'CompanyController@show');
 Route::post('/get/companies', 'CompanyController@getCompanies');
+Route::post('/company/up', 'CompanyController@upCompany');
+Route::post('/company/down', 'CompanyController@downCompany');
 //END COMPANY

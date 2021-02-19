@@ -19,6 +19,8 @@ $(document).ready(function(){
 
 
 function refresh(){
+    table = "";
+    $('#dtCompanies').dataTable().fnDestroy();
     table = $('#dtCompanies').DataTable( {
         "language": {
             "lengthMenu": "_MENU_ мөрөөр харах",
@@ -53,14 +55,51 @@ function refresh(){
             { data: "haryalalName", name: "haryalalName" },
             { data: "list", name: "list", "visible":false},
             { data: "action", name: "action" }
-          ]
+          ],
+          "order": [[ 2, "asc" ]]
     });
 }
 
 function up(id){
-
+    $.ajax({
+        type: "POST",
+        url: $('#dtCompanies').attr('up-url'),
+        data:{
+            _token: $('meta[name="csrf-token"]').attr('content'),
+            id:id
+        },
+        success:function(res){
+            if(res.status == "success"){
+                refresh();
+            }
+            else{
+                alertify.error(res.msg);
+            }
+        },
+        error: function(jqXhr, json, errorThrown){// this are default for ajax errors
+            alertify.error("Сервертэй холбогдоход алдаа гарлаа!!! Веб мастерт хандана уу!");
+        }
+    });
 }
 
 function down(id){
-  
+  $.ajax({
+      type: "POST",
+      url: $('#dtCompanies').attr('down-url'),
+      data:{
+          _token: $('meta[name="csrf-token"]').attr('content'),
+          id:id
+      },
+      success:function(res){
+          if(res.status == "success"){
+              refresh();
+          }
+          else{
+              alertify.error(res.msg);
+          }
+      },
+      error: function(jqXhr, json, errorThrown){// this are default for ajax errors
+          alertify.error("Сервертэй холбогдоход алдаа гарлаа!!! Веб мастерт хандана уу!");
+      }
+  });
 }

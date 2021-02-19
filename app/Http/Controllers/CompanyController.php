@@ -94,6 +94,12 @@ class CompanyController extends Controller
         return $company->list + 1;
     }
 
+    public function countCompany(){
+        $companies = DB::table('tb_haryalal')
+            ->get();
+        return count($companies);
+    }
+
     public function minusAfterAction($list){
         $nextCompanies = DB::table('tb_haryalal')
             ->where('list', '>', $list)->get();
@@ -101,6 +107,104 @@ class CompanyController extends Controller
             $company = Company::find($nextCompany->id);
             $company->list = $nextCompany->list - 1;
             $company->save();
+        }
+    }
+
+    public function upCompany(Request $req){
+        try {
+            DB::beginTransaction();
+            $upCompanyRow = DB::table('tb_haryalal')
+                ->where('id', '=', $req->id)
+                ->first();
+            if($upCompanyRow != null){
+                if($upCompanyRow->list == 1){
+                    $array = array(
+                          'status' => 'error',
+                          'msg' => 'Дээшлэх боломжгүй!!!'
+                      );
+                    return $array;
+                }
+                Company::where(
+                    [
+                        'list' => $upCompanyRow->list-1
+                    ]
+                )->update(
+                    [
+                        'list' => $upCompanyRow->list
+                    ]
+                );
+                $upCompany = Company::find($req->id);
+                $upCompany->list = $upCompany->list -1;
+                $upCompany->save();
+                DB::commit();
+                $array = array(
+                      'status' => 'success'
+                    );
+                return $array;
+            }
+            else{
+                $array = array(
+                      'status' => 'error',
+                      'msg' => 'Алдаа гарлаа!!! Веб мастерт хандана уу!'
+                  );
+                return $array;
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            $array = array(
+                  'status' => 'error',
+                  'msg' => 'Алдаа гарлаа!!! Веб мастерт хандана уу!'
+              );
+            return $array;
+        }
+    }
+
+    public function downCompany(Request $req){
+        try {
+            DB::beginTransaction();
+            $upCompanyRow = DB::table('tb_haryalal')
+                ->where('id', '=', $req->id)
+                ->first();
+            if($upCompanyRow != null){
+                if($upCompanyRow->list == $this->countCompany()){
+                    $array = array(
+                          'status' => 'error',
+                          'msg' => 'Доошлох боломжгүй!!!'
+                      );
+                    return $array;
+                }
+                Company::where(
+                    [
+                        'list' => $upCompanyRow->list+1
+                    ]
+                )->update(
+                    [
+                        'list' => $upCompanyRow->list-1
+                    ]
+                );
+                $upCompany = Company::find($req->id);
+                $upCompany->list = $upCompany->list + 1;
+                $upCompany->save();
+                DB::commit();
+                $array = array(
+                      'status' => 'success'
+                    );
+                return $array;
+            }
+            else{
+                $array = array(
+                      'status' => 'error',
+                      'msg' => 'Алдаа гарлаа!!! Веб мастерт хандана уу!'
+                  );
+                return $array;
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            $array = array(
+                  'status' => 'error',
+                  'msg' => 'Алдаа гарлаа!!! Веб мастерт хандана уу!'
+              );
+            return $array;
         }
     }
 }

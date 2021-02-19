@@ -1,7 +1,7 @@
 @extends('layouts.layout_admin')
 @section('content')
     <h3 class="text-center"><strong>Утасны жагсаалт</strong></h3>
-    <table id="dtCompanies" post-url="{{url("/get/companies")}}" class="table table-striped table-bordered" style="width:100%;">
+    <table id="dtCompanies" up-url="{{url("/company/up")}}" down-url="{{url("/company/down")}}" post-url="{{url("/get/companies")}}" class="table table-striped table-bordered" style="width:100%;">
         <thead>
             <tr>
               <th>ID</th>
