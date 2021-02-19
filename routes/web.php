@@ -27,8 +27,10 @@ Route::post('/contact/store', 'adminController@store');
 Route::post('/contact/update', 'adminController@update');
 Route::post('/contact/delete', 'adminController@delete');
 
+
 Route::get('/test/users', 'testController@index');
 Route::get('/test', 'CompanyController@countCompany');
+
 
 
 
