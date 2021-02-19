@@ -162,11 +162,11 @@ class CompanyController extends Controller
     public function downCompany(Request $req){
         try {
             DB::beginTransaction();
-            $upCompanyRow = DB::table('tb_haryalal')
+            $downCompanyRow = DB::table('tb_haryalal')
                 ->where('id', '=', $req->id)
                 ->first();
-            if($upCompanyRow != null){
-                if($upCompanyRow->list == $this->countCompany()){
+            if($downCompanyRow != null){
+                if($downCompanyRow->list == $this->countCompany()){
                     $array = array(
                           'status' => 'error',
                           'msg' => 'Доошлох боломжгүй!!!'
@@ -175,16 +175,16 @@ class CompanyController extends Controller
                 }
                 Company::where(
                     [
-                        'list' => $upCompanyRow->list+1
+                        'list' => $downCompanyRow->list+1
                     ]
                 )->update(
                     [
-                        'list' => $upCompanyRow->list-1
+                        'list' => $downCompanyRow->list
                     ]
                 );
-                $upCompany = Company::find($req->id);
-                $upCompany->list = $upCompany->list + 1;
-                $upCompany->save();
+                $downCompany = Company::find($req->id);
+                $downCompany->list = $downCompany->list + 1;
+                $downCompany->save();
                 DB::commit();
                 $array = array(
                       'status' => 'success'

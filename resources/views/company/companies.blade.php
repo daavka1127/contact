@@ -14,7 +14,7 @@
 
         </tbody>
     </table>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#newPunishment" id="btnNewCompany">Нэмэх</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewCompany" id="btnNewCompany">Нэмэх</button>
     <button type="button" class="btn btn-warning" id="btnEditCompany">Засах</button>
     <button type="button" class="btn btn-danger" id="btnDeleteCompany">Устгах</button>
 @endsection
