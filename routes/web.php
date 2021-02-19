@@ -41,4 +41,6 @@ Route::get('/company/show', 'CompanyController@show');
 Route::post('/get/companies', 'CompanyController@getCompanies');
 Route::post('/company/up', 'CompanyController@upCompany');
 Route::post('/company/down', 'CompanyController@downCompany');
+Route::post('/company/new', 'CompanyController@store');
+Route::post('/company/update', 'CompanyController@update');
 //END COMPANY

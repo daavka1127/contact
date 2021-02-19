@@ -17,6 +17,8 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewCompany" id="btnNewCompany">Нэмэх</button>
     <button type="button" class="btn btn-warning" id="btnEditCompany">Засах</button>
     <button type="button" class="btn btn-danger" id="btnDeleteCompany">Устгах</button>
+    @include('company.companyNew')
+    @include('company.companyEdit')
 @endsection
 
 @section('css')
@@ -56,4 +58,7 @@
     <script src="{{url('public/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
     <script src="{{url("public/js/company/company.js")}}"></script>
+    <script src="{{url("public/js/company/CompanyNew.js")}}"></script>
+    <script src="{{url("public/js/company/CompanyEdit.js")}}"></script>
+    <script src="{{url("public/js/company/CompanyDelete.js")}}"></script>
 @endsection

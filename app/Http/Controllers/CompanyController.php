@@ -30,7 +30,7 @@ class CompanyController extends Controller
     public function store(Request $req){
         try {
             $company = new Company;
-            $company->haryalalName = $req->haryalalName;
+            $company->haryalalName = $req->name;
             $company->list = $this->getLastListNumber();
             $company->save();
             $array = array(
@@ -49,12 +49,12 @@ class CompanyController extends Controller
 
     public function update(Request $req){
         try {
-            $company = Company::find($req->id);
-            $company->haryalalName = $req->haryalalName;
+            $company = Company::find($req->companyID);
+            $company->haryalalName = $req->name;
             $company->save();
             $array = array(
                   'status' => 'success',
-                  'msg' => 'Амжилттай нэмлээ!!!'
+                  'msg' => 'Амжилттай заслаа!!!'
               );
             return $array;
         } catch (\Exception $e) {

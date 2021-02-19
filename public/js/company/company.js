@@ -12,7 +12,7 @@ $(document).ready(function(){
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
             var currow = $(this).closest('tr');
-            dataRow = $('#tableNorms').DataTable().row(currow).data();
+            dataRow = $('#dtCompanies').DataTable().row(currow).data();
         }
     });
 });
